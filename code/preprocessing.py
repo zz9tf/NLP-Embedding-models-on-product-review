@@ -1,9 +1,8 @@
-import yaml
-from easydict import EasyDict as edict
-import gzip
-import os
+import yaml, gzip
 import pandas as pd
+from easydict import EasyDict as edict
 from sklearn.model_selection import train_test_split
+from collections import Counter
 
 def load_params(path: str):
     """
@@ -61,10 +60,26 @@ def processing(parames: dict, df: pd.core.frame.DataFrame):
             random_state=parames.rand_seed,
             shuffle=True
         )
+        categories = Counter(df["overall"])
         print("\nLoaded data points {}".format(len(df)))
-        print("     - [{}] Train data".format(len(train_dataset)))
-        print("     - [{}] Develop data".format(len(dev_dataset)))
-        print("     - [{}] Test data".format(len(test_dataset)))
+        print("{} categories =>".format(len(categories.keys())), end="")
+        for k in categories.keys(): print("    {}: {}".format(k, categories[k]), end="")
+        print()
+
+        categories = Counter(train_dataset["overall"])
+        print("     - [{}] Train data ".format(len(train_dataset)), end="")
+        for k in categories.keys(): print("    {}: {}".format(k, categories[k]), end="")
+        print()
+
+        categories = Counter(dev_dataset["overall"])
+        print("     - [{}] Develop data ".format(len(dev_dataset)), end="")
+        for k in categories.keys(): print("    {}: {}".format(k, categories[k]), end="")
+        print()
+
+        categories = Counter(test_dataset["overall"])
+        print("     - [{}] Test data ".format(len(test_dataset), ), end="")
+        for k in categories.keys(): print("    {}: {}".format(k, categories[k]), end="")
+        print()
         
         return train_dataset, dev_dataset, test_dataset
 
