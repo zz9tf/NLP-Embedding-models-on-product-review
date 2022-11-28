@@ -1,0 +1,26 @@
+data:
+  path: ../data/reviews_Books_5.json.gz
+  # The number of datapoints gets by going over data file with for loop.
+  # For accelerate propose, I directly use the result.
+  point_num: 8898041 
+  ################################################
+  # user:
+  #   - reviewerID # ID of the reviewer
+  #   - reviewerName # name of the reviewer
+  # item:
+  #   - asin # ID of the product
+  # reviews:
+    # - helpful # helpfulness rating of the review, eg. 2/3
+    # - reviewText # text of the review
+    # - overall # rating of the product
+    # - summary # summary of the review
+    # - unixReviewTime # time of the review(unix time)
+    # - reviewTime # time of the review(raw time)
+  ################################################
+  use_data_type:
+    - reviewText
+    - overall
+load:
+  small_dataset: False
+  small_dataset_size: 10000
+rand_seed: 0
