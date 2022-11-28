@@ -21,6 +21,7 @@ data:
     - reviewText
     - overall
 load:
-  small_dataset: False
-  small_dataset_size: 10000
-rand_seed: 0
+  small_dataset: True
+  small_dataset_size: 1000
+preprocessing:
+  rand_seed: 0
