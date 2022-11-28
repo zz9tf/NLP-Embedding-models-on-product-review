@@ -32,10 +32,10 @@ def load_data(params: dict):
     df = dict()
     for rowId, data_point in enumerate(gz):
         df[rowId] = eval(data_point)
-        stars = '*'*int(50*(rowId+1)/params.data.point_num) # not finish yet
+        stars = '*'*int(50*(rowId+1)/params.data.point_num)
         print("Loading data points: |{:50s}| {:.2f}% [{}|{}]".format(
             stars, 
-            (rowId+1)/params.data.point_num, 
+            100*(rowId+1)/params.data.point_num, 
             rowId+1, 
             params.data.point_num)
             , end="\r")
