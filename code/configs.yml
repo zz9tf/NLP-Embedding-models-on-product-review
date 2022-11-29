@@ -25,3 +25,5 @@ load:
   small_dataset_size: 1000
 preprocessing:
   rand_seed: 0
+  is_stem: False # This parameter is for word stemming. You can set this parameter False for accelerating
+  is_stopwords: False # This parameter is for removing stopwords. You can set this parameter False for accelerating

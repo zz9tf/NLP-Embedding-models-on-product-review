@@ -1,4 +1,3 @@
-from sklearn.preprocessing import LabelEncoder
 import nltk
 nltk.download('punkt')
 nltk.download('wordnet')
