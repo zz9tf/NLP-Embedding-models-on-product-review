@@ -1,0 +1,312 @@
+=== Naive Bayes - vCountVectorizer-mf50-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vCountVectorizer-mf50-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vCountVectorizer-mf50-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vCountVectorizer-mf50-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vCountVectorizer-mf500-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vCountVectorizer-mf500-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vCountVectorizer-mf500-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vCountVectorizer-mf500-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vCountVectorizer-mf5000-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vCountVectorizer-mf5000-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vCountVectorizer-mf5000-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vCountVectorizer-mf5000-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vTfidfVectorizer-mf50-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vTfidfVectorizer-mf50-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vTfidfVectorizer-mf50-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vTfidfVectorizer-mf50-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vTfidfVectorizer-mf500-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vTfidfVectorizer-mf500-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vTfidfVectorizer-mf500-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vTfidfVectorizer-mf500-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vTfidfVectorizer-mf5000-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vTfidfVectorizer-mf5000-ng(1,1) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Naive Bayes - vTfidfVectorizer-mf5000-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+
+=== Random Forest - vTfidfVectorizer-mf5000-ng(1,3) report ===
+              precision    recall  f1-score   support
+
+           5     0.6092    0.6246    0.6168     47542
+           4     0.3104    0.1157    0.1685     22661
+           3     0.1648    0.3980    0.2331     10404
+           2     0.1765    0.1556    0.1654      4749
+           1     0.1968    0.1349    0.1601      3624
+
+    accuracy                         0.4235     88980
+   macro avg     0.2915    0.2858    0.2688     88980
+weighted avg     0.4412    0.4235    0.4151     88980
+

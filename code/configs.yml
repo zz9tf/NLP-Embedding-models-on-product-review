@@ -1,3 +1,9 @@
+labels:
+  - 5
+  - 4
+  - 3
+  - 2
+  - 1
 data:
   path: ../data/reviews_Books_5.json.gz
   # The number of datapoints gets by going over data file with for loop.
@@ -17,13 +23,26 @@ data:
     # - unixReviewTime # time of the review(unix time)
     # - reviewTime # time of the review(raw time)
   ################################################
-  use_data_type:
-    - reviewText
-    - overall
+
 load:
   small_dataset: True
-  small_dataset_size: 1000
+  small_dataset_size: 889804
 preprocessing:
+  verctorizers:
+    - CountVectorizer
+    - TfidfVectorizer
+    # - DictVectorizer
+  ngram_range:
+    - (1,1)
+    - (1,3)
+  max_feature:
+    - 50
+    - 500
+    - 5000
   rand_seed: 0
   is_stem: False # This parameter is for word stemming. You can set this parameter False for accelerating
   is_stopwords: False # This parameter is for removing stopwords. You can set this parameter False for accelerating
+  processed_data_dir: ../processed_data
+train:
+  fig_dir: ../result_figures
+  log_dir: ..
