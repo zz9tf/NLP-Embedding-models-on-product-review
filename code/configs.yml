@@ -1,48 +1,25 @@
 labels:
-  - 5
-  - 4
-  - 3
-  - 2
   - 1
+  - 2
+rand_seed: 0
+processed_data_dir: ../processed_data
 data:
-  path: ../data/reviews_Books_5.json.gz
-  # The number of datapoints gets by going over data file with for loop.
-  # For accelerate propose, I directly use the result.
-  point_num: 8898041 
-  ################################################
-  # user:
-  #   - reviewerID # ID of the reviewer
-  #   - reviewerName # name of the reviewer
-  # item:
-  #   - asin # ID of the product
-  # reviews:
-    # - helpful # helpfulness rating of the review, eg. 2/3
-    # - reviewText # text of the review
-    # - overall # rating of the product
-    # - summary # summary of the review
-    # - unixReviewTime # time of the review(unix time)
-    # - reviewTime # time of the review(raw time)
-  ################################################
-
-load:
-  small_dataset: True
-  small_dataset_size: 889804
-preprocessing:
+  path: ../data/amazon_reviews.csv
+  small_dataset: False
+  small_dataset_size: 100
+feature:
   verctorizers:
     - CountVectorizer
     - TfidfVectorizer
-    # - DictVectorizer
   ngram_range:
     - (1,1)
-    - (1,3)
+    - (2,2)
   max_feature:
+    - 5
     - 50
-    - 500
-    - 5000
-  rand_seed: 0
+    - 200
   is_stem: False # This parameter is for word stemming. You can set this parameter False for accelerating
   is_stopwords: False # This parameter is for removing stopwords. You can set this parameter False for accelerating
-  processed_data_dir: ../processed_data
 train:
   fig_dir: ../result_figures
   log_dir: ..

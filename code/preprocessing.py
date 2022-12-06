@@ -1,4 +1,4 @@
-import yaml, gzip
+import yaml
 import pandas as pd
 import numpy as np
 from easydict import EasyDict as edict
@@ -33,32 +33,11 @@ def load_data(params: dict):
     Returns:
         pd.core.frame.DataFrame: A dataframe includes all data in this project.
     """
-    
-    gz = gzip.open(params.data.path, 'rb')
-    df = dict()
-    for rowId, data_point in enumerate(gz):
-        df[rowId] = eval(data_point)
-        if params.load.small_dataset:
-            stars = '*'*int(50*(rowId+1)/params.load.small_dataset_size)
-            print("Loading data points: |{:50s}| {:.2f}% [{}|{}]".format(
-                stars, 
-                100*(rowId+1)/params.load.small_dataset_size, 
-                rowId+1, 
-                params.load.small_dataset_size)
-                , end="\r")
-        else:
-            stars = '*'*int(50*(rowId+1)/params.data.point_num)
-            print("Loading data points: |{:50s}| {:.2f}% [{}|{}]".format(
-                stars, 
-                100*(rowId+1)/params.data.point_num, 
-                rowId+1, 
-                params.data.point_num)
-                , end="\r")
-        if rowId+1 == params.load.small_dataset_size and params.load.small_dataset:
-            break
-    print()
-    
-    return pd.DataFrame.from_dict(df, orient='index')
+    df = pd.read_csv(params.data.path)
+    if params.data.small_dataset:
+        df = df[['0', '1', '2']][:params.data.small_dataset_size]
+    print("Loading data {}".format(len(df)))
+    return df.dropna()
 
 
 def split_data(df: pd.core.frame.DataFrame, params: dict):
@@ -77,57 +56,39 @@ def split_data(df: pd.core.frame.DataFrame, params: dict):
     train_dataset, other_dataset = train_test_split(
         df, 
         train_size=0.8, 
-        random_state=params.preprocessing.rand_seed,
+        random_state=params.rand_seed,
         shuffle=True
     )
     dev_dataset, test_dataset = train_test_split(
         other_dataset, 
         test_size=0.5, 
-        random_state=params.preprocessing.rand_seed,
+        random_state=params.rand_seed,
         shuffle=True
     )
-    categories = Counter(df["overall"])
+    categories = Counter(df["0"])
     print("\nLoaded data points {}".format(len(df)))
     print("{} categories =>".format(len(categories.keys())), end="")
     for k in params.labels: print("    {}: {}".format(k, categories[k]), end="")
     print()
 
-    categories = Counter(train_dataset["overall"])
+    categories = Counter(train_dataset["0"])
     print("     - [{}] Train data ".format(len(train_dataset)), end="")
     for k in params.labels: print("    {}: {}".format(k, categories[k]), end="")
     print()
 
-    categories = Counter(dev_dataset["overall"])
+    categories = Counter(dev_dataset["0"])
     print("     - [{}] Develop data ".format(len(dev_dataset)), end="")
     for k in params.labels: print("    {}: {}".format(k, categories[k]), end="")
     print()
 
-    categories = Counter(test_dataset["overall"])
+    categories = Counter(test_dataset["0"])
     print("     - [{}] Test data ".format(len(test_dataset), ), end="")
     for k in params.labels: print("    {}: {}".format(k, categories[k]), end="")
     print()
 
     return train_dataset, dev_dataset, test_dataset
 
-
-def split_data_id(params:dict):
-    np.random.seed(params.preprocessing.rand_seed)
-    shuffled_data_id = None
-    if params.load.small_dataset:
-        shuffled_data_id = np.random.shuffle(range(params.load.small_dataset_size))
-        train_id = shuffled_data_id[:int(params.load.small_dataset_size*0.8)]
-        dev_id = shuffled_data_id[int(params.load.small_dataset_size*0.8):int(params.load.small_dataset_size*0.9)]
-        test_id = shuffled_data_id[int(params.load.small_dataset_size*0.9):]
-
-    else:    
-        shuffled_data_id = np.random.shuffle(range(params.data.point_num))
-        train_id = shuffled_data_id[:int(params.data.point_num*0.8)]
-        dev_id = shuffled_data_id[int(params.data.point_num*0.8):int(params.data.point_num*0.9)]
-        test_id = shuffled_data_id[int(params.data.point_num*0.9):]
-    params.update({"data": {"train_id": train_id, "dev_id": dev_id, "test_id": test_id}})
-
-
-def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="CountVectorizer", max_feature: int=5000, ngram_range: tuple=(1,1)):
+def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="CountVectorizer", max_feature: int=5000, ngram_range: str="(1,1)"):
     """
     This method processes the whole data with special configurations and generates 
     processed dataset which is suitable to be feed into models. It will load processed data,
@@ -143,10 +104,10 @@ def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="Count
     total_datasets = edict()
     dataset_name = ["train", "dev", "test"]
     params_set = "v{}-mf{}-ng{}".format(vector_set, max_feature, ngram_range)
-    file_dir = "{}/{}".format(params.preprocessing.processed_data_dir, params_set)
+    file_dir = "{}/{}".format(params.processed_data_dir, params_set)
     
-    if not os.path.exists(params.preprocessing.processed_data_dir):
-        os.mkdir(params.preprocessing.processed_data_dir)
+    if not os.path.exists(params.processed_data_dir):
+        os.mkdir(params.processed_data_dir)
 
     if os.path.exists(file_dir):
         for name in dataset_name:
@@ -156,18 +117,17 @@ def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="Count
     else:
         os.mkdir(file_dir)
         # Select the target data and drop out blank link
-        df = df[["reviewText", "overall"]].dropna()
-        df["overall"] = [int(rating) for rating in df["overall"]]
+        df["0"] = [int(rating) for rating in df["0"]]
             
-        vectorizer = get_vectorizer(vector_set, df["reviewText"], params)
+        vectorizer = get_vectorizer(vector_set, max_feature, ngram_range, df["2"], params)
         datasets = split_data(df, params)
         print()
             
         for name, dataset in zip(dataset_name, datasets):
-            dataset_x = vectorize(vectorizer, dataset["reviewText"], params)
+            dataset_x = vectorize(vectorizer, dataset["2"], params)
             # save processed data for program accelerating
             sparse.save_npz(file_dir+"/{}_x.npz".format(name), dataset_x)
-            dataset_y = dataset["overall"]
+            dataset_y = dataset["0"]
             dataset_y.to_pickle(file_dir+"/{}_y.pkl".format(name))
             total_datasets.update({name: {"x": dataset_x, "y": dataset_y}})
     return total_datasets
@@ -181,7 +141,7 @@ if __name__ == "__main__":
     
     # Load data
     df = load_data(params)
-    total_datasets = processing(params, df)
+    total_datasets = processing(df, params)
     
 
     

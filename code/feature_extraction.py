@@ -24,26 +24,26 @@ def tokenize(text):
     
 
 
-def get_vectorizer(vectorizer_name, dataset, params):
+def get_vectorizer(vector_set, max_feature, ngram_range, dataset, params):
     verctorizer = None
-    if vectorizer_name == "CountVectorizer":
+    if vector_set == "CountVectorizer":
         verctorizer = CountVectorizer(
             tokenizer=tokenize, 
-            ngram_range=eval(params.preprocessing.ngram_range[1]), 
-            max_features=5000)
-    elif vectorizer_name == "TfidfVectorizer":
+            ngram_range=eval(ngram_range), 
+            max_features=max_feature)
+    elif vector_set == "TfidfVectorizer":
         verctorizer = TfidfVectorizer(
             tokenizer=tokenize, 
-            ngram_range=eval(params.preprocessing.ngram_range[1]), 
-            max_features=params.preprocessing.max_feature[2])
+            ngram_range=eval(ngram_range), 
+            max_features=max_feature)
     else:
-        assert False, "Not valid vectorizer {}.".format(vectorizer_name)
+        assert False, "Not valid vectorizer {}.".format(vector_set)
     global id, processing_step, total_num, is_stem, is_stopwords
     id = 0
     processing_step = "Fitting"
     total_num = len(dataset)
-    is_stem = params.preprocessing.is_stem
-    is_stopwords = params.preprocessing.is_stopwords
+    is_stem = params.feature.is_stem
+    is_stopwords = params.feature.is_stopwords
 
     verctorizer.fit(dataset)
     print()
@@ -58,8 +58,8 @@ def vectorize(vect_trans, dataset, params):
     id = 0
     processing_step = "Transforming"
     total_num = len(dataset)
-    is_stem = params.preprocessing.is_stem
-    is_stopwords = params.preprocessing.is_stem
+    is_stem = params.feature.is_stem
+    is_stopwords = params.feature.is_stem
 
     transform_result = vect_trans.transform(dataset)
     print()
