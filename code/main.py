@@ -13,8 +13,7 @@ from model import models
 params = load_params("configs.yml")
 
 # Load data
-# df = load_data(params)
-df = None
+df = load_data(params)
 
 log = open(params.train.log_dir + "/log.txt", "w")
 log.close()

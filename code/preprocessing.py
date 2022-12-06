@@ -36,6 +36,8 @@ def load_data(params: dict):
     df = pd.read_csv(params.data.path)
     if params.data.small_dataset:
         df = df[['0', '1', '2']][:params.data.small_dataset_size]
+    else:
+        df = df[['0', '1', '2']]
     print("Loading data {}".format(len(df)))
     return df.dropna()
 

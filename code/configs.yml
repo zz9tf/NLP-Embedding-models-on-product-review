@@ -20,6 +20,8 @@ feature:
     - 200
   is_stem: False # This parameter is for word stemming. You can set this parameter False for accelerating
   is_stopwords: False # This parameter is for removing stopwords. You can set this parameter False for accelerating
+model:
+  None
 train:
   fig_dir: ../result_figures
   log_dir: ..
