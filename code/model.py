@@ -27,3 +27,12 @@ def models(total_datasets, params_set, params):
     # Show result
     plot_result("Nearest Centroid - {}".format(params_set), total_datasets.dev.y, predictions_clf, params.labels, params.train.log_dir)
     tight_layout(clf, total_datasets.dev.x, total_datasets.dev.y, params.labels, params.train.fig_dir+"/{}-nc.png".format(params_set))
+
+def LR_model(total_datasets, params_set, params, penalty):
+    Logits = LogisticRegression(penalty=penalty, solver="saga")
+    Logits.fit(total_datasets.train.x, total_datasets.train.y)
+    # predict the labels on dev dataset
+    predictions_Logits = Logits.predict(total_datasets.dev.x)
+    # Show result
+    plot_result("Logits - {}".format(params_set), total_datasets.dev.y, predictions_Logits, params.labels, params.train.log_dir)
+    tight_layout(Logits, total_datasets.dev.x, total_datasets.dev.y, params.labels, params.train.fig_dir+"/{}-lg.png".format(params_set))
