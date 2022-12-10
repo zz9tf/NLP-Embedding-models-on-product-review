@@ -83,7 +83,7 @@ These datasets have been lowered and stemmed. Stop words have also been removed.
 
 ## 3. Results
 
-In this section, I have used the logistic regression (LR) model, the Naive Bayes (NB) model, and the Nearest Centroid (NC) model built into the scikit-learn package to combine different feature vectorizer configurations and different hyperparameters to generate some fine-turn models for Reviews rating prediction.
+In this section, I have used the logistic regression (LR) model, the Naive Bayes (NB) model, and the Nearest Centroid (NC) model built into the scikit-learn package, combining different feature vectorizer configurations and different hyperparameters to generate some fine-tuned models for Reviews rating prediction.
 
 ### 3.1 Feature vectorizer experience
 
@@ -91,7 +91,7 @@ In the experience, I mainly set up different configurations on feature vectorize
 
 #### 3.1.1 Vectorizer difference
 
-This experiment kept extracting at most 50 features from reviews. It processed reviews to 1 gram. All models are default models. It only used two different vectorizers to analyze the vectorizer effect on model performances. One is CountVectorizer. Another is TfidfVectorizer. The following are the results. 
+This experiment kept extracting at most 50 features from reviews. It processed reviews to 1 item length. All models are default models. It only used two different vectorizers to analyze the vectorizer effect on model performances. One is CountVectorizer. Another is TfidfVectorizer. The following are the results. 
 
 <div align="center">
     <table>
@@ -106,7 +106,7 @@ This experiment kept extracting at most 50 features from reviews. It processed r
             <td>F1</td>
         </tr>
         <tr>
-            <td>LR</td>
+            <td rowspan="2">LR</td>
             <td>Count</td>
             <td>63.61%</td>
             <td>64.62%</td>
@@ -116,7 +116,6 @@ This experiment kept extracting at most 50 features from reviews. It processed r
             <td>0.6236</td>
         </tr>
         <tr>
-            <td></td>
             <td>Tfidf</td>
             <td>63.59%</td>
             <td>63.46%</td>
@@ -126,7 +125,7 @@ This experiment kept extracting at most 50 features from reviews. It processed r
             <td>0.6383</td>
         </tr>
         <tr>
-            <td>NB</td>
+            <td rowspan="2">NB</td>
             <td>Count</td>
             <td>56.36%</td>
             <td>57.25%</td>
@@ -136,7 +135,6 @@ This experiment kept extracting at most 50 features from reviews. It processed r
             <td>0.5364</td>
         </tr>
         <tr>
-            <td></td>
             <td>Tfidf</td>
             <td>56.36%</td>
             <td>57.25%</td>
@@ -146,7 +144,7 @@ This experiment kept extracting at most 50 features from reviews. It processed r
             <td>0.5364</td>
         </tr>
         <tr>
-            <td>NC</td>
+            <td rowspan="2">NC</td>
             <td>Count</td>
             <td>53.18%</td>
             <td>53.71%</td>
@@ -156,7 +154,6 @@ This experiment kept extracting at most 50 features from reviews. It processed r
             <td>0.4989</td>
         </tr>
         <tr>
-            <td></td>
             <td>Tfidf</td>
             <td>60.64%</td>
             <td>60.56%</td>
@@ -174,11 +171,11 @@ This experiment kept extracting at most 50 features from reviews. It processed r
     </div>
 </div>
 
-As a result, TfidfVectorizer is a better vectorizer for the LR model and the NC model. For the LR model, TfidfVectorizer is harmful to precision and specificity. But the NC model is a comprehensive improvement. As for the NB model, both CountVectorizer and TfidfVectorizer are workable since there is no difference between the results based on the two vectorizers.
+As a result, TfidfVectorizer is a better vectorizer for the LR model and the NC model. For the LR model, TfidfVectorizer is harmful to precision and specificity. But for the NC model, all performances are improved. As for the NB model, both CountVectorizer and TfidfVectorizer are workable since there is no difference between the results based on the two vectorizers.
 
 #### 3.1.2 N-grams difference
 
-This experiment kept extracting at most 50 features from reviews. It applied TfidfVectorizer. All models are default models. It only used three different n-gram strategies. (1, 1) is for one gram, and (2, 2) is for two grams.
+This experiment kept extracting at most 50 features from reviews. It applied TfidfVectorizer. All models are default models. It only used three different n-gram strategies. (1, 1) is for one item length, (2, 2) is for two items length, (5, 5) is for five items length.
 
 <div align="center">
     <table>
@@ -193,7 +190,7 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>F1</td>
     </tr>
     <tr>
-        <td>LR</td>
+        <td rowspan="3">LR</td>
         <td>(1,1)</td>
         <td>63.59%</td>
         <td>63.46%</td>
@@ -203,7 +200,6 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.6383</td>
     </tr>
     <tr>
-        <td></td>
         <td>(2,2)</td>
         <td>66.87%</td>
         <td>66.29%</td>
@@ -213,7 +209,6 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.675</td>
     </tr>
     <tr>
-        <td></td>
         <td>(5,5)</td>
         <td>65.24%</td>
         <td>65.63%</td>
@@ -223,7 +218,7 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.6486</td>
     </tr>
     <tr>
-        <td>NB</td>
+        <td rowspan="3">NB</td>
         <td>(1,1)</td>
         <td>56.36%</td>
         <td>57.25%</td>
@@ -233,7 +228,6 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.5364</td>
     </tr>
     <tr>
-        <td></td>
         <td>(2,2)</td>
         <td>56.10%</td>
         <td>54.86%</td>
@@ -243,7 +237,6 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.6123</td>
     </tr>
     <tr>
-        <td></td>
         <td>(5,5)</td>
         <td>60.83%</td>
         <td>61.23%</td>
@@ -253,7 +246,7 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.6018</td>
     </tr>
     <tr>
-        <td>NC</td>
+        <td rowspan="3">NC</td>
         <td>(1,1)</td>
         <td>60.64%</td>
         <td>60.56%</td>
@@ -263,7 +256,6 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.6087</td>
     </tr>
     <tr>
-        <td></td>
         <td>(2,2)</td>
         <td>63.90%</td>
         <td>63.35%</td>
@@ -273,7 +265,6 @@ This experiment kept extracting at most 50 features from reviews. It applied Tfi
         <td>0.6469</td>
     </tr>
     <tr>
-        <td></td>
         <td>(5,5)</td>
         <td>63.78%</td>
         <td>63.81%</td>
@@ -295,7 +286,7 @@ As a result, (2,2) strategies have better performance on the LR model and the NC
 
 #### 3.1.3 Max feature difference
 
-This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. All models are default models. It only used three different max feature strategies. This experiment applied 5, 50, and and 200 max feature strategies.
+This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. All models are default models. It only used four different max feature strategies. This experiment applied 5, 50, 200, and 1000 max feature strategies.
 
 <div align="center">
     <table>
@@ -310,7 +301,7 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>F1</td>
         </tr>
         <tr>
-            <td>LR</td>
+            <td rowspan="4">LR</td>
             <td>5</td>
             <td>57.05%</td>
             <td>56.63%</td>
@@ -320,7 +311,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.585</td>
         </tr>
         <tr>
-            <td></td>
             <td>50</td>
             <td>66.87%</td>
             <td>66.29% </td>
@@ -330,7 +320,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.675</td>
         </tr>
         <tr>
-            <td></td>
             <td>200</td>
             <td>74.37%</td>
             <td>74.07%</td>
@@ -340,7 +329,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.7456</td>
         </tr>
         <tr>
-            <td></td>
             <td>1000</td>
             <td>78.03%</td>
             <td>77.66%</td>
@@ -350,7 +338,7 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.7819</td>
         </tr>
         <tr>
-            <td>NB</td>
+            <td rowspan="4">NB</td>
             <td>5</td>
             <td>50.51%</td>
             <td>50.28%</td>
@@ -360,7 +348,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.6654</td>
         </tr>
         <tr>
-            <td></td>
             <td>50</td>
             <td>56.10%</td>
             <td>54.86%</td>
@@ -370,7 +357,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.6123</td>
         </tr>
         <tr>
-            <td></td>
             <td>200</td>
             <td>59.16%</td>
             <td>58.47%</td>
@@ -380,7 +366,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.6084</td>
         </tr>
         <tr>
-            <td></td>
             <td>1000</td>
             <td>61.82%</td>
             <td>61.56%</td>
@@ -390,7 +375,7 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.623</td>
         </tr>
         <tr>
-            <td>NC</td>
+            <td rowspan="4">NC</td>
             <td>5</td>
             <td>57.00%</td>
             <td>56.48%</td>
@@ -400,7 +385,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.588</td>
         </tr>
         <tr>
-            <td></td>
             <td>50</td>
             <td>63.90% </td>
             <td>63.35%</td>
@@ -410,7 +394,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.6469</td>
         </tr>
         <tr>
-            <td></td>
             <td>200</td>
             <td>69.74%</td>
             <td>69.21%</td>
@@ -420,7 +403,6 @@ This experiment applied the TfidfVectorizer and kept using (2,2) from reviews. A
             <td>0.7019</td>
         </tr>
         <tr>
-            <td></td>
             <td>1000</td>
             <td>70.78%</td>
             <td>70.23%</td>
@@ -443,7 +425,7 @@ A higher max feature is always a good feature for our models to capture detailed
 ### 3.3 Test result
 
 In this experiment, I applied fine-tuned LR model, BN model, and NC model 
-into the test dataset, to visualize their performances.
+into the test dataset, to visualize their effectiveness.
 
 <div align="center">
     <table>
@@ -504,14 +486,14 @@ For the model LR, I applied TfidfVectorizer, (2,2) n-grams range, and 1000 max f
             <td>support</td>
         </tr>
         <tr>
-            <td>1</td>
+            <td>1 (Negative)</td>
             <td>77.79%</td>
             <td>78.78%</td>
             <td>72.28%</td>
             <td>200199</td>
         </tr>
         <tr>
-            <td>2</td>
+            <td>2 (Positive)</td>
             <td>78.46%</td>
             <td>77.46%</td>
             <td>77.96%</td>
