@@ -3,17 +3,23 @@ from sklearn.metrics import classification_report
 from sklearn.metrics import multilabel_confusion_matrix, ConfusionMatrixDisplay
 
 
-def plot_result(model_name, real_y, predict_y, labels, log_dir=None, plot=True):
-    report_dir = classification_report(y_true=real_y, y_pred=predict_y, labels=labels, digits=4, output_dict=True)
+def plot_result(model_name, real_y, predict_y, labels, log_dir=None, plot=True, isTest=False):
+    if isTest:
+        report_dir = classification_report(y_true=real_y, y_pred=predict_y, labels=labels, digits=4)
+    else:
+        report_dir = classification_report(y_true=real_y, y_pred=predict_y, labels=labels, digits=4, output_dict=True)
     result = "=== {} report ===\n".format(model_name)
-    result += "=== Accuracy {:.2f}%\n".format(report_dir["accuracy"]*100)
-    result += "=== Precision {:.2f}%   Recall {:.2f}%    Sensitivity {:.2f}%    Specificity {:.2f}%    F1 {:.4f}\n".format(
-            report_dir["1"]["precision"]*100,
-            report_dir["1"]["recall"]*100,
-            report_dir["2"]["precision"]*100,
-            report_dir["2"]["recall"]*100,
-            report_dir["1"]["f1-score"]
-        )
+    if isTest:
+        result += report_dir
+    else:
+        result += "=== Accuracy {:.2f}%\n".format(report_dir["accuracy"]*100)
+        result += "=== Precision {:.2f}%   Recall {:.2f}%    Sensitivity {:.2f}%    Specificity {:.2f}%    F1 {:.4f}\n".format(
+                report_dir["1"]["precision"]*100,
+                report_dir["1"]["recall"]*100,
+                report_dir["2"]["precision"]*100,
+                report_dir["2"]["recall"]*100,
+                report_dir["1"]["f1-score"]
+            )
     if log_dir != None:
         log = open(log_dir + "/log.txt", "a+")
         log.write(result+"\n")

@@ -4,7 +4,7 @@ from nltk.stem.snowball import SnowballStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 
 def tokenize(text):
-    global id, processing_step, total_num, is_stem, is_stopwords
+    global id, processing_step, total_num #, is_stem, is_stopwords
     id += 1
     stars = '*'*int(50*id/total_num)
     print("{} data points: |{:50s}| {:.2f}% [{}|{}]".format(

@@ -7,7 +7,7 @@ nltk.download('stopwords')
 
 
 from preprocessing import load_params, load_data, processing
-from model import models, LR_model
+from model import models, test_model
 
 # Load parameters
 params = load_params("configs.yml")
@@ -77,30 +77,23 @@ if params.feature.max_feature is not None:
         models(total_datasets, params_set, params)
 
 # Experiment 4
-if params.model is not None:
+if params.test is not None:
     if params.train.log_dir != None:
         log = open(params.train.log_dir + "/log.txt", "a+")
         log.write("\n\nExperiment 4\n")
         log.close()
-    vector_set = "TfidfVectorizer"
-    ngram = "(2,2)"
-    mf = 1000
-    total_datasets = processing(
-        df=df,
-        params=params,
-        vector_set=vector_set,
-        max_feature=mf,
-        ngram_range=ngram
-    )
-    for penalty in params.model.lr.penalty:
-        params_set = "pnt-{}".format(penalty)
-        LR_model(total_datasets, params_set, params, penalty)
+    for config in params.test.models:
+        model = config.model
+        vector_set = config.verctorizers
+        ngram = config.ngram_range
+        mf = config.max_feature
 
-                
-            
-                
-
-
-
-
-
+        total_datasets = processing(
+            df=df,
+            params=params,
+            vector_set=vector_set,
+            max_feature=mf,
+            ngram_range=ngram
+        )
+        params_set = "Test-{}-v{}-mf{}-ng{}".format(model, vector_set, mf, ngram)
+        test_model(model, total_datasets, params_set, params)
