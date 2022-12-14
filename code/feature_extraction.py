@@ -4,6 +4,15 @@ from nltk.stem.snowball import SnowballStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 
 def tokenize(text):
+    """
+    The method for vectorizer to tokenize before vectorizer to default tokenize the text.
+
+    Args:
+        text (str): A string to be tokenized in vectorizer.
+
+    Returns:
+        text (str): A string has been tokenized.
+    """
     global id, processing_step, total_num #, is_stem, is_stopwords
     id += 1
     stars = '*'*int(50*id/total_num)
@@ -25,6 +34,19 @@ def tokenize(text):
 
 
 def get_vectorizer(vector_set, max_feature, ngram_range, dataset, params):
+    """
+    The method to generate vectorizer.
+
+    Args:
+        vector_set (str): Vectorizer to be used.
+        max_feature (int): Max feature for vectorizer.
+        ngram_range (tuple): ngram range for vectorizer.
+        dataset (pd.core.frame.DataFrame): A dataset contains all data in this project.
+        params (dict): A dictionary contains all parameters in this project.
+
+    Returns:
+        Vectorizer: the vectorizer
+    """
     verctorizer = None
     if vector_set == "CountVectorizer":
         verctorizer = CountVectorizer(
@@ -54,6 +76,17 @@ def get_vectorizer(vector_set, max_feature, ngram_range, dataset, params):
 
 
 def vectorize(vect_trans, dataset, params):
+    """
+    This method use [vect_trans] to vectorize [dataset]
+
+    Args:
+        vect_trans : the vectorizer
+        dataset (pd.core.frame.DataFrame): A dataset to be vectorized.
+        params (dict): A dictionary contains all parameters in this project.
+
+    Returns:
+        transform_result (pd.core.frame.DataFrame): A dataset has been vectorized.
+    """
     global id, processing_step, total_num, is_stem, is_stopwords
     id = 0
     processing_step = "Transforming"

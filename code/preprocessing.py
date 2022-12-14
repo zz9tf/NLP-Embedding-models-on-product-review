@@ -91,6 +91,7 @@ def split_data(df: pd.core.frame.DataFrame, params: dict):
     return train_dataset, dev_dataset, test_dataset
 
 def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="CountVectorizer", max_feature: int=5000, ngram_range: str="(1,1)"):
+    
     """
     This method processes the whole data with special configurations and generates 
     processed dataset which is suitable to be feed into models. It will load processed data,
@@ -98,9 +99,13 @@ def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="Count
 
     Args:
         df (pd.core.frame.DataFrame): A dataset contains all data in this project.
-        data_type (list): _description_
-        vector_set (str, optional): _description_. Defaults to "CountVectorizer".
-        ngram_range (tuple, optional): _description_. Defaults to (1,1).
+        params (dict): A dictionary contains all parameters in this project.
+        vector_set (str, optional): Vectorizer to be used. Defaults to "CountVectorizer".
+        max_feature (int, optional): Max feature for vectorizer. Defualts to 5000.
+        ngram_range (tuple, optional): ngram range for vectorizer. Defaults to (1,1).
+
+    Returns:
+        total_datasets (dict): A dictionary contains train_dataset, dev_dataset, test_dataset
     """
 
     total_datasets = edict()
@@ -132,6 +137,7 @@ def processing(df: pd.core.frame.DataFrame, params: dict, vector_set: str="Count
             dataset_y = dataset["0"]
             dataset_y.to_pickle(file_dir+"/{}_y.pkl".format(name))
             total_datasets.update({name: {"x": dataset_x, "y": dataset_y}})
+            
     return total_datasets
         
 

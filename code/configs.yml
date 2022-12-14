@@ -9,17 +9,17 @@ data:
   small_dataset_size: 100
 feature:
   verctorizers:
-    # - CountVectorizer
-    # - TfidfVectorizer
+    - CountVectorizer
+    - TfidfVectorizer
   ngram_range:
-    # - (1,1)
-    # - (2,2)
-    # - (5,5)
+    - (1,1)
+    - (2,2)
+    - (5,5)
   max_feature:
-    # - 5
-    # - 50
-    # - 200
-    # - 1000
+    - 5
+    - 50
+    - 200
+    - 1000
   # is_stem: False # This parameter is for word stemming. You can set this parameter False for accelerating
   # is_stopwords: False # This parameter is for removing stopwords. You can set this parameter False for accelerating
 train:
